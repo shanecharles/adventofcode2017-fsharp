@@ -17,4 +17,5 @@ let catchPackets delay path =
 let part1 = scanners |> catchPackets 0 |> Seq.sumBy (fun (x,y) -> x * y)
 let part2 = seq { for i in 0 .. System.Int32.MaxValue do 
                     if scanners |> catchPackets i |> Seq.isEmpty
-                    then yield i } |> Seq.head  
+                    then yield i } 
+            |> Seq.head  
