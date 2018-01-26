@@ -7,7 +7,7 @@ let scanners = System.IO.File.ReadAllLines(__SOURCE_DIRECTORY__ + "/inputs/day13
                |> Seq.map parseLine
 
 let catchPackets delay path = 
-    let homePos range = (range - 2) * 2 + 2 
+    let homePos range = (range - 1) * 2
     path 
      |> Seq.choose 
        (fun (layer, range) -> (layer + delay) % (homePos range) |> function
