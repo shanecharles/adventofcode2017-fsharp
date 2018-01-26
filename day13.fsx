@@ -13,7 +13,6 @@ let catchPackets delay path =
        (fun (layer, range) -> (layer + delay) % (homePos range) |> function
           | 0 -> Some (layer, range)
           | _ -> None)
- 
 
 let part1 = scanners |> catchPackets 0 |> Seq.sumBy (fun (x,y) -> x * y)
 let part2 = seq { for i in 0 .. System.Int32.MaxValue do 
