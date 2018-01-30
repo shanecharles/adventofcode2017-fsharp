@@ -2,10 +2,10 @@
 #r "packages/FParsec/lib/net40-client/FParsec.dll"
 open FParsec
 
-let parseLine' : Parser<int * int, _> = tuple2 (pint32 .>> pstring ": ") pint32 
+let parseLine : Parser<int * int, _> = tuple2 (pint32 .>> pstring ": ") pint32 
 
 let scanners = System.IO.File.ReadAllLines(__SOURCE_DIRECTORY__ + "/inputs/day13.txt")
-               |> Seq.map (run parseLine' >> (function Success (x,_,_) -> x))
+               |> Seq.map (run parseLine >> (function Success (x,_,_) -> x))
 
 let catchPackets delay path = 
     let homePos range = (range - 1) * 2
